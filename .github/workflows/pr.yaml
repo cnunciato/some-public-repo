@@ -1,0 +1,22 @@
+name: Make upstream PR
+on:
+  workflow_dispatch:
+jobs:
+  make_upstream_pr:
+    name: Make upstream PR
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.PULUMI_BOT_TOKEN }}
+          fetch-depth: 0
+
+      - name: Push branch and PR
+        run: |
+          git remote add upstream https://github.com/cnunciato/some-public-repo.git
+          git checkout -b some-branch
+          git push upstream some-branch --force
+          gh config set prompt disabled
+          gh pr create --repo cnunciato/some-public-repo --head some-branch --base master --title "Add content from downstream" --body "Brings in content from cnunciato/some-public-repo-private." || true
+        env:
+          GITHUB_TOKEN: ${{ secrets.PULUMI_BOT_TOKEN }}
