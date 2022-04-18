@@ -8,7 +8,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Configure Git
+      - name: Add remote, branch, and push
         run: |
           git remote add upstream git@github.com:cnunciato/some-public-repo
           git checkout -b some-branch
