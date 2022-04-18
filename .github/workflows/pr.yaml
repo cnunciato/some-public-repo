@@ -16,6 +16,7 @@ jobs:
           git remote add upstream https://github.com/cnunciato/some-public-repo.git
           git checkout -b some-branch
           git push upstream some-branch
+          hub pull-request --base cnunciato:some-public-repo
         env:
           GITHUB_TOKEN: ${{ secrets.PULUMI_BOT_TOKEN }}
         
