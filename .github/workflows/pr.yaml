@@ -11,12 +11,10 @@ jobs:
           token: ${{ secrets.PULUMI_BOT_TOKEN }}
           fetch-depth: 0
 
-      - name: Add remote, branch, and push
+      - name: Push branch and PR
         run: |
           git remote add upstream https://github.com/cnunciato/some-public-repo.git
           git checkout -b some-branch
-          git fetch --prune
-          git rebase upstream/some-branch
           git push -u upstream some-branch
           hub pull-request --message "Add content from downstream"
         env:
