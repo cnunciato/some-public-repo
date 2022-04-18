@@ -12,7 +12,7 @@ jobs:
 
       - name: Add remote, branch, and push
         run: |
-          git remote add upstream git@github.com:cnunciato/some-public-repo.git
+          git remote add upstream https://github.com/cnunciato/some-public-repo.git
           git checkout -b some-branch
           git push upstream HEAD
         env:
