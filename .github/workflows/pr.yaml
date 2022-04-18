@@ -16,7 +16,7 @@ jobs:
           git remote add upstream https://github.com/cnunciato/some-public-repo.git
           git checkout -b some-branch
           git push -u upstream some-branch --force
-          hub pull-request --message "Add content from downstream" --force
+          gh pr create --repo cnunciato/some-public-repo --head some-branch --base master --title "Add content from downstream" || true
         env:
           GITHUB_TOKEN: ${{ secrets.PULUMI_BOT_TOKEN }}
         
