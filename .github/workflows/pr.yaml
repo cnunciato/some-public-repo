@@ -17,6 +17,6 @@ jobs:
           git checkout -b some-branch
           git push upstream some-branch --force
           gh config set prompt disabled
-          gh pr create --repo cnunciato/some-public-repo --head some-branch --base master --title "Add content from downstream" --body "Brings in content from cnunciato/some-public-repo-private."
+          gh pr create --repo cnunciato/some-public-repo --head some-branch --base master --title "Add content from downstream" --body "Brings in content from cnunciato/some-public-repo-private." || true
         env:
           GITHUB_TOKEN: ${{ secrets.PULUMI_BOT_TOKEN }}
