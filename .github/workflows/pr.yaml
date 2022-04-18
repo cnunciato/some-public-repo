@@ -1,1 +1,15 @@
-name: something
+name: Make upstream PR
+on:
+  workflow_dispatch:
+jobs:
+  make_upstream_pr:
+    name: Make upstream PR
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Configure Git
+        run: |
+          git remote add upstream git@github.com:cnunciato/some-public-repo
+          git checkout -b some-branch
+          git push upstream HEAD
