@@ -8,13 +8,13 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.PULUMI_BOT_TOKEN }}
 
       - name: Add remote, branch, and push
         run: |
-          git remote add upstream https://github.com/cnunciato/some-public-repo
+          git remote add upstream git@github.com:cnunciato/some-public-repo.git
           git checkout -b some-branch
           git push upstream HEAD
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PULUMI_BOT_TOKEN }}
         
