@@ -6,9 +6,10 @@ jobs:
     name: Make upstream PR
     runs-on: ubuntu-18.04
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           token: ${{ secrets.PULUMI_BOT_TOKEN }}
+          fetch_depth: 0
 
       - name: Add remote, branch, and push
         run: |
